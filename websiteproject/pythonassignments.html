@@ -1,0 +1,221 @@
+<html>
+<head>
+  <link rel="stylesheet" href="styles/site.css"></link>
+</head>
+<h1>Python Assignments Page</h1>
+<body>
+  <ul>
+  <li>Pool Table App
+  <p class="pythonassignments">
+    import datetime<br>
+    import json<br>
+    import smtplib, ssl<br>
+    from email import encoders<br>
+    from email.mime.base import MIMEBase<br>
+    from email.mime.multipart import MIMEMultipart<br>
+    from email.mime.text import MIMEText<br>
+    from email.utils import formatdate<br>
+<br>
+    now = datetime.datetime.now()<br>
+<br>
+    pooltables = []<br>
+    pt_object_array = []<br>
+<br>
+    class PoolTable:<br>
+      def __init__(self,tablenumber):<br>
+        self.tablenumber = tablenumber<br>
+        self.start_time = 0<br>
+        self.end_time = 0<br>
+        self.is_available = True<br>
+        self.total_time_played = 0<br>
+        self.total_cost = 0<br>
+<br>
+      def check_out(self):<br>
+        if self.is_available == True:<br>
+          self.is_available = False<br>
+          self.start_time = datetime.datetime.now()<br>
+        else:<br>
+          print("Pool Table", self.tablenumber, "Is Checked Out")<br>
+<br>
+      def check_in(self):<br>
+        self.is_available = True<br>
+        self.end_time = datetime.datetime.now()<br>
+<br>
+      def calculate_total(self):<br>
+        self.total_time_played = self.end_time - self.start_time<br>
+        self.total_cost = self.total_time_played.total_seconds() / 60 / 60 * 30<br>
+<br>
+    def crash_protection():<br>
+        with open('crashprotection.json') as file_object:<br>
+            pt_object_array = json.load(file_object)<br>
+            for index in range(0,len(pt_object_array)):<br>
+                pt_object = pt_object_array[index]<br>
+                for key in pt_object:<br>
+                    pooltables[pt_object["tablenumber"] - 1].tablenumber = pt_object["tablenumber"]<br>
+                    pooltables[pt_object["tablenumber"] - 1].start_time = datetime.datetime.strptime(pt_object["start_time"], '%Y-%m-%d %H:%M:%S.%f')<br>
+                    pooltables[pt_object["tablenumber"] - 1].is_available = pt_object["is_available"]<br>
+<br>
+    def send_final_report():<br>
+        subject = "An email with attachment from Pool Tables"<br>
+        body = "This is an email with attachment sent from Pool Tables"<br>
+        sender_email = input("Enter the address to send report: ")<br>
+        password = input("Type your password and press enter: ")<br>
+        receiver_email = input("Enter the address to recieve report: ")<br>
+        report = f'{now.year}-{now.month}-{now.day}.txt'<br>
+        smtp_server = "smtp.gmail.com"<br>
+        port = 587<br>
+<br>
+        message = MIMEMultipart()<br>
+        message["Subject"] = subject<br>
+        message["From"] = sender_email<br>
+        message["To"] = receiver_email<br>
+<br>
+        part = MIMEBase('application', 'octet-stream')<br>
+        part.set_payload(open(f'{report}', 'rb').read())<br>
+        encoders.encode_base64(part)<br>
+        part.add_header("Content-Disposition",f"attachment; filename= {report}",)<br>
+        message.attach(part)<br>
+<br>
+        try:<br>
+            server = smtplib.SMTP(smtp_server,port)<br>
+            server.ehlo()<br>
+            server.starttls()<br>
+            server.ehlo()<br>
+            server.login(sender_email, password)<br>
+            server.sendmail(sender_email, receiver_email, message.as_string())<br>
+            server.quit()<br>
+        except SMTPException as error:<br>
+            print("Error")<br>
+<br>
+    for index in range(1,13):<br>
+            pool_table = PoolTable(index)<br>
+            pooltables.append(pool_table)<br>
+<br>
+    crash_protection()<br>
+<br>
+    while True:<br>
+      for index in range(0,len(pooltables)):<br>
+          print("Table", pooltables[index].tablenumber)<br>
+          if pooltables[index].is_available == True:<br>
+            print("NOT OCCUPIED")<br>
+          else:<br>
+            print("OCCUPIED", pooltables[index].start_time, datetime.datetime.now() - pooltables[index].start_time)<br>
+      print("--------------------------------------")<br>
+      print("Press 1 To Check Out A Table")<br>
+      print("Press 2 To Check In A Table")<br>
+      choice = input("Enter Your Choice: ")<br>
+      print("--------------------------------------")<br>
+<br>
+      if choice == "1":<br>
+        print("Enter Table Number To Check Out")<br>
+        tablenoco = int(input("Enter Number: "))<br>
+        pooltables[tablenoco - 1].check_out()<br>
+        print("--------------------------------------")<br>
+        pt_object = {<br>
+        "tablenumber": pooltables[tablenoco - 1].tablenumber,<br>
+        "start_time":  str(pooltables[tablenoco - 1].start_time),<br>
+        "is_available": pooltables[tablenoco - 1].is_available,<br>
+        }<br>
+        pt_object_array.append(pt_object)<br>
+        with open('crashprotection.json', 'w') as file_object:<br>
+            json.dump(pt_object_array,file_object)<br>
+            <br>
+        elif choice == "2":<br>
+        print("Enter Table Number To Check In")<br>
+        tableno = int(input("Enter Number: ")) - 1<br>
+        <br>
+        if pooltables[tableno].is_available is False:<br>
+          pooltables[tableno].check_in()<br>
+          pooltables[tableno].calculate_total()<br>
+          print(round(pooltables[tableno].total_cost, 2), "Dollars")<br>
+          print("--------------------------------------")<br>
+          with open(f'{now.year}-{now.month}-{now.day}.txt', 'a') as file_object:<br>
+              file_object.write("Table Number: ")<br>
+              file_object.write(str(pooltables[tableno].tablenumber))<br>
+              file_object.write('\r')<br>
+              file_object.write("Start Time: ")<br>
+              file_object.write(str(pooltables[tableno].start_time))<br>
+              file_object.write('\r')<br>
+              file_object.write("End Time: ")<br>
+              file_object.write(str(pooltables[tableno].end_time))<br>
+              file_object.write('\r')<br>
+              file_object.write("Total Time Played: ")<br>
+              file_object.write(str(pooltables[tableno].total_time_played))<br>
+              file_object.write('\r')<br>
+              file_object.write("Total Cost: ")<br>
+              file_object.write(str(round(pooltables[tableno].total_time_played.total_seconds() / 60 / 60 * 30, 2)))<br>
+              file_object.write(" Dollars")<br>
+              file_object.write('\r')<br>
+              <br>
+        else:<br>
+          print("Table Number", pooltables[tableno].tablenumber, "Is Checked In")<br>
+          print("--------------------------------------")<br>
+<br>
+      else:<br>
+        choice_quit = input("Enter Q To Quit or Anything Else To Continue: ").upper()<br>
+        <br>
+        if choice_quit == "Q":<br>
+            cp = {}<br>
+            with open('crashprotection.json','w') as file_object:<br>
+                json.dump(cp,file_object)<br>
+            choice_email = input("Would You Like An Email Of The Final Report? Enter Yes or No: ").upper()<br>
+            <br>
+            if choice_email == "YES":<br>
+                send_final_report()<br>
+                <br>
+              else:<br>
+                pass<br>
+            break<br>
+            <br>
+        else:<br>
+          pass<br>
+  </p>
+  </li>
+  <li>Menu App
+  <p class="pythonassignments">
+  asks = []<br>
+<br>
+  while True:<br>
+    print("Press 1 to add task")<br>
+    print("Press 2 to delete task")<br>
+    print("Press 3 to view tasks")<br>
+    print("Press q to quit")<br>
+    choice = input("Enter your choice: ")<br>
+<br>
+    if choice == "1":<br>
+      title = input("Enter title of task: ")<br>
+      priority = input("Enter priority: High, Medium, Low: ")<br>
+<br>
+      task = {"title": title, "priority": priority}<br>
+<br>
+      tasks.append(task)<br>
+      print(tasks)<br>
+<br>
+    elif choice == "2":<br>
+      for index in range(0,len(tasks)):<br>
+        task = tasks[index]<br>
+        print(index + 1, task["title"])<br>
+<br>
+      delete = int(input("Enter number of task to delete: ")) - 1<br>
+      del tasks[delete]<br>
+<br>
+    elif choice == "3":<br>
+      for index in range(0,len(tasks)):<br>
+        task = tasks[index]<br>
+        print(index + 1, " - ", task["title"], " - ", task["priority"])<br>
+<br>
+    elif choice == "q":<br>
+      break<br>
+  </p>
+  </li>
+  </ul>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="manga.html">Manga</a></li>
+    <li><a href="videogames.html">Video Games</a></li>
+    <li><a href="pythonassignments.html">Python Assignments</a></li>
+    <li><a href="cartoons.html">Cartoons</a></li>
+    <li><a href="otherthings.html">Other Things</a></li>
+  </ul>
+</body>
+</html>

@@ -1,0 +1,47 @@
+body{
+  background-image: url(https://images.unsplash.com/photo-1455612693675-112974d4880b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1600&h=500&q=60);
+}
+
+h1{
+  font-size: 50;
+}
+
+h2{
+  font-size: 40;
+}
+
+ul{
+  font-size: 30;
+  font-weight: bold;
+  font-family: cursive;
+  color: black;
+}
+
+p{
+  font-size: 20;
+  font-style: italic;
+  font-family: fantasy;
+  color: #000380;
+}
+img{
+  margin-left: 25;
+  margin-right: 25;
+  margin-top: 25;
+  margin-bottom: 25;
+  width: 150;
+  height: 200;
+}
+.pythonassignments{
+  font-size: 20;
+  color: white;
+  font-style: normal;
+  font-family: monospace;
+  background-color: black;
+}
+
+th{
+  font-size: 30;
+}
+td{
+  font-size: 20;
+}

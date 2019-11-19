@@ -1,0 +1,92 @@
+body {
+  font-family: sans-serif;
+}
+header {
+  display: inline-block;
+  width: 100%;
+  color: white;
+  background-color: #579be2;
+  height: 75;
+  font-size: 35;
+  padding: 40px 0px 0px 0px;
+}
+a {
+  display: inline;
+  color: white;
+  margin: 0px 0px 0px 40px;
+  text-decoration: none;
+}
+.HighOnCoding {
+  font-weight: 900;
+}
+.onpage {
+  font-weight: 400;
+  font-size: 25;
+}
+.notonpage {
+  font-weight: 75;
+  font-size: 25;
+}
+
+section {
+  background-color: #77797959;
+  margin: 20px 30px 20px 30px;
+}
+ul {
+  list-style-type: none;
+}
+.current {
+  font-weight: 900;
+  font-size: 30;
+  padding: 20px 5px 20px 20px;
+  color: #00000082;
+}
+.currentreview {
+  padding: 0px 5px 20px 20px;
+}
+.reviewtitle {
+  color: #3f67c1;
+  font-size: 20;
+  font-weight: 500;
+  margin: 0px 30px 10px 0px;
+}
+.review {
+  margin: 0px 30px 10px 0px;
+}
+.commentandlike {
+  background-color: orange;
+  margin: 0px 30px 10px 0px;
+  color: white;
+  padding: 5px 0px 5px 5px;
+  font-weight: 400;
+}
+.comment {
+  display: inline-block;
+  margin-right: 50px;
+}
+.like {
+  display: inline-block;
+}
+.row {
+  display: inline-block;
+  margin: 50px 50px 50px 50px;
+  font-weight: 100;
+}
+.boxes {
+  background-color: #77797959;
+  margin: 30px 30px 30px 30px;
+  padding: 75px 50px 75px 50px;
+  text-align: center;
+}
+.language{
+  width: 200;
+  height: 50;
+  font-size: 45;
+  color: black;
+}
+.articles {
+  font-size: 20;
+  position: relative;
+  top: 50;
+  color: #00000070;
+}

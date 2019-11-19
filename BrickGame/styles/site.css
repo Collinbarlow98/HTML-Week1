@@ -1,0 +1,140 @@
+body {
+  background-color: black;
+  margin: 0 0 0 0;
+  color: #eaeaa6b3;
+  text-align: right;
+  width: 1410;
+}
+.yellow {
+  display: inline-block;
+  background-color: #eaeaa6b3;
+  width: 1410;
+  height: 30;
+  position:relative;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: 0;
+}
+.black {
+  display: inline-block;
+  background-color: black;
+  width: 1310;
+  height: 30;
+  position:relative;
+  top: 0;
+  left: 50;
+  right: 0;
+  bottom: 0;
+  margin: 0 100 0 0;
+}
+.red {
+  display: inline-block;
+  background-color: red;
+  width: 100;
+  height: 30;
+  position: relative;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: 5 5 0 0;
+}
+.yellowblock {
+  display: inline-block;
+  background-color: yellow;
+  width: 100;
+  height: 30;
+  position: relative;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: 5 5 0 0;
+}
+.blackblock {
+  display: inline-block;
+  background-color: black;
+  width: 100;
+  height: 30;
+  position: relative;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: 5 5 0 0;
+}
+.greenblock {
+  display: inline-block;
+  background-color: green;
+  width: 100;
+  height: 30;
+  position: relative;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: 5 5 0 0;
+}
+.blueblock {
+  display: inline-block;
+  background-color: blue;
+  width: 100;
+  height: 30;
+  position: relative;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: 5 5 0 0;
+}
+
+.board {
+  display: inline-block;
+  background-color: #eaeaa6b3;
+  width: 200;
+  height: 20;
+  position: relative;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: 5 5 0 0;
+}
+.ball {
+  display: inline-block;
+  background-color: white;
+  width: 10;
+  height: 10;
+  position: relative;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: 5 95 20 0;
+}
+.ball2 {
+  display: inline-block;
+  background-color: white;
+  width: 10;
+  height: 10;
+  position: relative;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: 5 5 20 90;
+}
+.ball3 {
+  display: inline-block;
+  background-color: white;
+  width: 10;
+  height: 10;
+  position: relative;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: 5 5 10 90;
+}

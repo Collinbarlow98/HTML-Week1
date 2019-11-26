@@ -1,0 +1,60 @@
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 500;
+
+}
+#header {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  width: 400;
+  height: 30;
+  align-items: center;
+}
+
+#addButton {
+  background-color: blue;
+  color: white;
+  width: 75;
+  justify-self: center;
+}
+
+#chkbx {
+  justify-self: center;
+}
+
+#removeButton {
+  background-color: blue;
+  color: white;
+  border: none;
+}
+
+#ulList {
+  display: flex;
+  flex-direction: column;
+  list-style-type: none;
+  width: 400;
+  padding: 0;
+  color: white;
+}
+
+#ulListDone {
+  display: flex;
+  flex-direction: column;
+  list-style-type: none;
+  width: 400;
+  padding: 0;
+  color: white;
+}
+
+#liItem {
+  height: 50;
+  background-color: blue;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-row: 1;
+  grid-column-gap: 50px;
+  margin: 10 0;
+  align-items: center;
+}

@@ -1,0 +1,14 @@
+#newsList {
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+}
+
+.newsitem {
+  background-color: #c5c5c5;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-row-gap: 10px;
+  margin: 10 0;
+}

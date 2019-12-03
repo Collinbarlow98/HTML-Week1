@@ -1,0 +1,12 @@
+
+.order {
+  display: flex;
+  flex-direction: column;
+  width: 300;
+  list-style-type: none;
+  margin: 10;
+  background-color: black;
+  color: white;
+  padding: 0;
+  text-align: center;
+}

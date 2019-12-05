@@ -1,0 +1,37 @@
+<html>
+<head><link rel="stylesheet" href="grocery.css"></head>
+<body>
+  <input type="text" id="groceryStore" placeholder="Store"/>
+  <input type="text" id="itemName" placeholder="Item"/>
+  <button id="addItem">Add Item</button>
+  <ul id="storeListUL"></ul>
+
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/7.5.0/firebase-app.js"></script>
+
+  <script src="https://www.gstatic.com/firebasejs/7.5.0/firebase-database.js"></script>
+
+  <!-- TODO: Add SDKs for Firebase products that you want to use
+       https://firebase.google.com/docs/web/setup#available-libraries -->
+  <script src="https://www.gstatic.com/firebasejs/7.5.0/firebase-analytics.js"></script>
+
+  <script>
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+      apiKey: "AIzaSyDDJkfLTh5soVRhycbbb0lW5qLexxzkdSk",
+      authDomain: "grocery-app-599bf.firebaseapp.com",
+      databaseURL: "https://grocery-app-599bf.firebaseio.com",
+      projectId: "grocery-app-599bf",
+      storageBucket: "grocery-app-599bf.appspot.com",
+      messagingSenderId: "233612375835",
+      appId: "1:233612375835:web:96c135be49bc494cdf05be",
+      measurementId: "G-QMF4HKG0V5"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    firebase.analytics();
+  </script>
+
+  <script src="app.js"></script>
+</body>
+</html>
